@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace PlayerJumpPatch
 {
-        [BepInPlugin(ModId, ModName, "0.0.0.0")]
+        [BepInPlugin(ModId, ModName, "0.0.0.1")]
         [BepInProcess("Rounds.exe")]
         public class PlayerJumpPatch : BaseUnityPlugin
         {
@@ -96,5 +96,16 @@ namespace PlayerJumpPatch
         }
 
 
+    }
+
+    // postfix CharacterStatModifiers ResetStats to make sure that the number of jumps is reset properly
+    [HarmonyPatch(typeof(CharacterStatModifiers), "ResetStats")]
+    class CharacterStatModifiersPatchResetStats
+    {
+        private static void Postfix(CharacterStatModifiers __instance)
+        {
+            ((CharacterData)Traverse.Create(__instance).Field("data").GetValue()).jumps = 1;
+
+        }
     }
 }

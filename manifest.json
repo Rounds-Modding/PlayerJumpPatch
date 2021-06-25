@@ -1,6 +1,6 @@
 {
     "name": "PlayerJumpPatch",
-    "version_number": "0.0.0",
+    "version_number": "0.0.1",
     "website_url": "https://github.com/Rounds-Modding/PlayerJumpPatch",
     "description": "Patches the erroneous PlayerJump.Jump function in the base game",
     "dependencies": [

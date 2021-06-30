@@ -59,7 +59,9 @@ namespace PlayerJumpPatch
             }
             else
             {
-                if (data.sinceGrounded > 0.05f)
+                // another fix, if the player is not grounded at all (regardless of how long its been), then the particles should be at the player
+                //if (data.sinceGrounded > 0.05f)
+                if (!data.isGrounded)
                 {
                     vector = __instance.transform.position;
                 }
